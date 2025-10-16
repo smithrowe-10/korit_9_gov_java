@@ -12,6 +12,12 @@ public class 최상위클래스 {
         String f = "abc";
         Car car = new Car("K3", "화이트");
         Car car2 = new Car("K3", "화이트");
+        Book book = new Book("K3", "화이트");
+
+
+        System.out.println(car.equals(book));
+        System.out.println(car.hashCode() == book.hashCode());
+
         Object g = (Object) car;
         String h = car.toString();
 
