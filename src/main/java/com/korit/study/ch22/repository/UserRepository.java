@@ -2,16 +2,18 @@ package com.korit.study.ch22.repository;
 
 import com.korit.study.ch22.entity.User;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class UserRepository {
     private static UserRepository instance;
-    private User[] users;
+    private List<User> users;
     private int autoIncrementId;
 
     private UserRepository() {
-        users = new User[0];
+        users = new ArrayList<>();
         autoIncrementId = 1;
     }
 
@@ -23,10 +25,8 @@ public class UserRepository {
     }
 
     public void insert(User user) {
-        User[] temp = Arrays.copyOf(users, users.length + 1);
         user.setId(autoIncrementId++);
-        temp[temp.length - 1] = user;
-        users = temp;
+        users.add(user);
     }
 
     public User findByUsername(String username) {
@@ -42,9 +42,9 @@ public class UserRepository {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("User 배열: [ ");
-        for (int i = 0; i < users.length; i++) {
-            stringBuilder.append(users[i]);
-            if (i != users.length - 1) {
+        for (int i = 0; i < users.size(); i++) {
+            stringBuilder.append(users.get(i));
+            if (i != users.size() - 1) {
                 stringBuilder.append(", ");
             }
         }
