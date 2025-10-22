@@ -38,10 +38,6 @@ public class UserRepository {
         return null;
     }
 
-    private int generateId() {
-        return users[users.length].getId() + 1;
-    }
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -57,14 +53,3 @@ public class UserRepository {
         return stringBuilder.toString();
     }
 }
-
-
-
-
-
-
-
-
-
-
-

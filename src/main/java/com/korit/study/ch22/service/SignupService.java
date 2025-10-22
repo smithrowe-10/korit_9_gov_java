@@ -9,7 +9,7 @@ import java.util.Objects;
 public class SignupService {
     // 1. instance static 변수 정의
     private static SignupService instance;
-    private UserRepository userRepository;
+    private UserRepository  userRepository;
 
     private SignupService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -24,10 +24,7 @@ public class SignupService {
 
     public boolean isValidDuplicatedUsername(String username) {
         User foundUser = userRepository.findByUsername(username);
-        if (Objects.isNull(foundUser)) {
-            return true;
-        }
-        return false;
+        return Objects.isNull(foundUser);
     }
 
     public boolean isValidPassword(String password) {
@@ -36,7 +33,7 @@ public class SignupService {
 
     public boolean isValidConfirmPassword(String password, String confirmPassword) {
         if (Objects.isNull(password) || Objects.isNull(confirmPassword)) {
-            return false;
+            return false    ;
         }
         return password.equals(confirmPassword);
     }

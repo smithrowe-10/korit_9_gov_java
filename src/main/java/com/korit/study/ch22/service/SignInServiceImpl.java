@@ -38,15 +38,13 @@ public class SignInServiceImpl implements SignInService{
 
         if (user != null) {
             if (PasswordEncoder.match(signInDto.getPassword(), user.getPassword())) {
-                System.out.println("로그인 성공: " + user.toString());
+                System.out.println("로그인 성공: " + user);
             } else {
-                System.out.println("비밀번호가 틀렸습니다.");
+                System.out.println("사용자 정보를 다시 확인하세요");
             }
         } else {
             System.out.println("사용자 정보를 다시 확인하세요");
         }
-
-
     }
 
     @Override
