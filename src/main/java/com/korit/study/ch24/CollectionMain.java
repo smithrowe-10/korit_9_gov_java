@@ -7,7 +7,7 @@ import java.util.List;
 public class CollectionMain {
     public static void main(String[] args) {
         // 문자열을 담을 수 있는 ArrayList 생성;
-        ArrayList<String>list = new ArrayList<>();
+        List<String>list = new ArrayList<>();
 
         // 값을 추가
         list.add("문자열 값1");
