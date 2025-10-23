@@ -2,7 +2,7 @@ package com.korit.study.ch22;
 
 import com.korit.study.ch22.dto.SignInDto;
 import com.korit.study.ch22.dto.SignupDto;
-import com.korit.study.ch22.repository.UserRepository;
+import com.korit.study.ch22.repository.UserRepositoryImpl1;
 import com.korit.study.ch22.service.SignInServiceImpl;
 import com.korit.study.ch22.service.SignupService;
 
@@ -86,7 +86,7 @@ public class SignupMain {
 
             } else if ("3".equals(selectedMenu)) {
                 System.out.println("[ 가입된 회원 전체 조회 ]");
-                System.out.println(UserRepository.getInstance().toString());
+                System.out.println(UserRepositoryImpl1.getInstance().toString());
             }
         }
 
