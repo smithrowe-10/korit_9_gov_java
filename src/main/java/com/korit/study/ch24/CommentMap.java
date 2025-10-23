@@ -8,7 +8,7 @@ public class CommentMap {
     String name;
     String content;
 
-    public CommentMap(String name, String  content) {
+    public CommentMap(String name, String content) {
         this.name = name;
         this.content = content;
     }
@@ -20,7 +20,5 @@ public class CommentMap {
 
         return writerMap;
     }
-
-
 
 }

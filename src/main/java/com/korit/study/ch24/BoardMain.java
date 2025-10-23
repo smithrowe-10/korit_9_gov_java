@@ -67,6 +67,7 @@ public class BoardMain {
         WriterMap writerMap2 = new WriterMap("김준사", 34);
         CommentMap commentMap3 = new CommentMap("김준오", "댓글 내용11");
         CommentMap commentMap4 = new CommentMap("김준육", "댓글 내용22");
+
         List<Object> commentList2 = new ArrayList<>(Arrays.asList(commentMap3.put(), commentMap4.put()));
 
         AllMap allMap2 = new AllMap("게시판 제목2", writerMap2.put(), "게시판 내용2", commentList2);
