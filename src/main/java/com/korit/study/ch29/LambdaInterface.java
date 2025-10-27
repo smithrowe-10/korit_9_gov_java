@@ -1,9 +1,14 @@
 package com.korit.study.ch29;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class LambdaInterface {
     public static void main(String[] args) {
@@ -99,6 +104,43 @@ public class LambdaInterface {
 
         System.out.println(functionResult3);
 
+
+        // 5. 매개변수 o, 리턴 Boolean
+        String searchUsername = "test1234";
+
+        Predicate<List<Map<String, String>>> listPredicate = list -> {
+            AtomicBoolean isfound = new AtomicBoolean(false);
+            list.forEach(map -> {
+                if (map.get("username").equals(searchUsername)) {
+                    isfound.set(true);
+                }
+            });
+            return isfound.get();
+        };
+
+        List<Map<String, String>> userList = List.of(
+                Map.of("username", "test1", "password", "1111"),
+                Map.of("username", "test12", "password", "2222"),
+                Map.of("username", "test123", "password", "3333"),
+                Map.of("username", "test1234", "password", "4444")
+        );
+
+        System.out.println(listPredicate.test(userList));
+
+        List<String> names = List.of("김준일", "김준이", "이준일", "이준이");
+        String startedLastName = "이";
+        List<String> filteringNames = names.stream()
+                .filter(name -> name.startsWith(startedLastName))
+                .collect(Collectors.toList());
+
+        System.out.println(names);
+        System.out.println(filteringNames);
+
+        String foundName = names.stream()
+                .filter(name -> name.equals("김준이"))
+                .collect(Collectors.toList())
+                .getFirst();
+        System.out.println(foundName);
 
 
     }
