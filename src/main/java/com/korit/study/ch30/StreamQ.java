@@ -38,6 +38,10 @@ class Employee {
     public double getSalary() {
         return salary;
     }
+
+    public EmployeeDTO toDto() {
+        return new EmployeeDTO(String.format("Mr./Ms. %s", name), String.format("$%.1f", salary));
+    }
 }
 
 class EmployeeDTO {
@@ -57,6 +61,13 @@ class EmployeeDTO {
         return salaryInfo;
     }
 
+    @Override
+    public String toString() {
+        return "EmployeeDTO{" +
+                "displayName='" + displayName + '\'' +
+                ", salaryInfo='" + salaryInfo + '\'' +
+                '}';
+    }
 }
 
 
@@ -171,11 +182,8 @@ public class StreamQ {
         );
 
         List<EmployeeDTO> employeeDTOS = employees.stream()
-                .map(e -> new EmployeeDTO(
-                        "Mr./Ms. " + e.getName(),
-                        "Salary: $" + e.getSalary()
-                ))
-                .collect(Collectors.toList());
+                .map(Employee::toDto)
+                .toList();
 
         System.out.println(employeeDTOS);
 
@@ -306,6 +314,4 @@ public class StreamQ {
         System.out.println(infoPhoneNumbers);
 
     }
-
-
 }
