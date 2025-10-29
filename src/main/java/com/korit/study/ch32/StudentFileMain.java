@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class StudentFileMain {
             System.out.println("FileReader 객체를 통해 데이터를 읽는데 실패하였습니다.");
         }
 
-        List<String> textList = Arrays.asList(stringBuilder.toString().split("\\n"));
+        List<String> textList = Arrays.asList(stringBuilder.toString().split("\n"));
 
         try {
             FileWriter fileWriter = new FileWriter("student.txt");
