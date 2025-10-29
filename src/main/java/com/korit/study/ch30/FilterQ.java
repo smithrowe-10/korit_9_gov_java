@@ -2,10 +2,7 @@ package com.korit.study.ch30;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 
 class Product {
@@ -261,10 +258,31 @@ public class FilterQ {
         List<Integer> numbers1 = Arrays.asList(1, 2, 3, 2, 4, 5, 3, 6, 7, 5, 8);
 
         List<Integer> notDupleNum = numbers1.stream()
-                .filter(n -> Collections.frequency(numbers1, n) == 1)
+                .filter(num -> numbers1.stream()
+                        .filter(num2 -> num2 == num).count() == 1)
                 .toList();
 
+//                .filter(n -> Collections.frequency(numbers1, n) == 1)
+
         System.out.println(notDupleNum);
+
+
+//        List<Integer> notDupleNum2 = new ArrayList<>();
+//        for (Integer num : numbers1) {
+//            int count = 0;
+//            for (Integer num2: numbers1) {
+//                if (num2 == num) {
+//                    count++;
+//                }
+//            }
+//            if (count == 1) {
+//                notDupleNum2.add(num);
+//            }
+//        }
+//        System.out.println(notDupleNum2);
+
+
+
 
         /// ///////////////////////////////////////////////////////////////////////////////////
 
@@ -277,9 +295,8 @@ public class FilterQ {
                 LocalDate.of(2024, 1, 14)  // 일요일
         );
 
-        List<String> weekend = dates.stream()
-                .filter(d -> d.getDayOfWeek() == DayOfWeek.SATURDAY ||d.getDayOfWeek() == DayOfWeek.SUNDAY)
-                .map(d -> d.getYear() + "-" + d.getMonthValue() + "-" + d.getDayOfMonth())
+        List<LocalDate> weekend = dates.stream()
+                .filter(d -> d.getDayOfWeek().equals(DayOfWeek.SATURDAY) || d.getDayOfWeek().equals(DayOfWeek.SUNDAY))
                 .toList();
 
         System.out.println(weekend);
